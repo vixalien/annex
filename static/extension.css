@@ -82,8 +82,9 @@ header .icon {
   width: 125px;
 }
 
-header .icon>img {
-  width: inherit;
+header .icon>* {
+  max-width: 100%;
+  height: auto
 }
 
 header {
