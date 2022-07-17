@@ -1,0 +1,41 @@
+main {
+  max-width: var(--content-width);
+  padding-inline: var(--content-padding);
+  hyphens: auto;
+  color: var(--text-color);
+  white-space: pre-line;
+  margin-inline: auto;
+  margin-block: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.checkbox-box {
+  height: fit-content;
+}
+
+.comments .load-more {
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.screenshot img {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .actions {
+    flex-direction: column;
+    gap: 5px;
+    align-items: stretch;
+  }
+
+  .actions > button {
+    padding-block: 6px;
+  }
+}

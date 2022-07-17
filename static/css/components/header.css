@@ -1,0 +1,88 @@
+header {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(-25deg,
+      var(--primary-color-variant-1),
+      var(--primary-color-variant-1),
+      var(--primary-color-variant-2),
+      var(--primary-color-variant-2));
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: -150%;
+  height: 400%;
+  transform: rotate(-10deg);
+  background-image: url("/header-background.svg");
+  background-position: center;
+  opacity: 0.04;
+}
+
+header ul {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header li > a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  padding: 9px 12px;
+  font-family: system-ui;
+}
+
+header li > a:hover {
+  background-color: black;
+  color: white;
+  border-radius: 7px;
+}
+
+header .bar {
+  display: flex;
+  justify-content: space-between;
+  max-width: var(--content-width);
+  padding-inline: var(--content-padding);
+  padding-block: 10px;
+  margin-inline: auto;
+  z-index: 2;
+  position: relative;
+}
+
+header .logo {
+  font-size: 32px;
+  margin: auto 0;
+  color: #000;
+}
+
+
+header .title {
+  font-size: 50px;
+  font-weight: 900;
+  margin-block: 0;
+}
+
+header .icon {
+  width: 125px;
+}
+
+header .icon>* {
+  max-width: 100%;
+  height: auto
+}
+
+.banderole {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 1em 45px;
+  z-index: 2;
+  position: relative;
+  flex-wrap: wrap;
+}

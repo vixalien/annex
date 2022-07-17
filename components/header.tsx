@@ -2,7 +2,6 @@
 /** @jsx h */
 /** @jsxFrag Fragment */
 
-import { Head } from "$fresh/runtime.ts"
 import { h, Fragment } from "preact";
 
 import { GNOMEExtensions } from "./icons.tsx";
@@ -21,9 +20,6 @@ interface HeaderProps {
 
 export const Header = ({ title, image, links, subtitle }: HeaderProps) => {
   return <>
-    <Head>
-      <link href="/extension.css" rel="stylesheet"></link>
-    </Head>
     <header>
       <div className="bar">
         <Link href="/" className="logo">
@@ -41,6 +37,7 @@ export const Header = ({ title, image, links, subtitle }: HeaderProps) => {
       </div>
       <div className="banderole">
         <div className="icon">
+          {image}
         </div>
         <div className="header-text">
           <h1 className="title">

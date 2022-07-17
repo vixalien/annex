@@ -2,6 +2,7 @@
 /** @jsxFrag Fragment */
 
 import { h, Fragment } from "preact";
+import { Head } from "$fresh/runtime.ts"
 import { HandlerContext, PageProps } from "$fresh/server.ts";
 
 import { Remove, Settings, } from "~/components/adwaita.tsx";
@@ -54,8 +55,16 @@ const Screenshot = ({ screenshot }: { screenshot?: string }) => {
 
 const Page = ({ data: { extension, comments } }: PageProps<ReturnedPageProps>) => {
   return <>
+    <Head>
+      <link href="/css/common.css" rel="stylesheet"></link>
+      <link href="/css/components/header.css" rel="stylesheet"></link>
+      <link href="/css/components/button.css" rel="stylesheet"></link>
+      <link href="/css/components/card.css" rel="stylesheet"></link>
+      <link href="/css/components/checkbox.css" rel="stylesheet"></link>
+      <link href="/css/extension.css" rel="stylesheet"></link>
+    </Head>
     <Header
-      image={<img src={extension.icon}/>}
+      image={<img src={extension.icon} />}
       title={extension.name}
       links={{
         "Installed Extensions": "/local",
