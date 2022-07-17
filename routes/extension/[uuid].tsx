@@ -45,7 +45,7 @@ const Actions = ({ extension }: NeedsExtension) => {
   }
 }
 
-const Screenshot = ({ screenshot }: { screenshot?: string }) => {
+const Screenshot = ({ screenshot }: { screenshot?: string | null }) => {
   if (!screenshot) return null;
   return <div className="screenshot">
     <h3>Screenshot</h3>

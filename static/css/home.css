@@ -3,13 +3,53 @@ header .banderole {
   margin-inline: auto;
 }
 
-header .banderole > * {
+header .banderole>* {
   flex: 1;
 }
 
 header .icon {
   width: unset;
 }
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 40px;
+}
+
+.card>.icon {
+  border-radius: 0px;
+}
+
+main {
+  background-color: linear-gradient(180deg,
+      var(--header-color),
+      var(--background-color));
+  max-width: var(--content-width);
+  padding: var(--content-padding);
+  margin-inline: auto;
+}
+
+main h2.hero {
+  font-size: 48px;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 16px;
+  hyphens: auto;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.search-bar input {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  width: 100%;
+  background-color: #e6e6e6;
+  font-size: 18px;
+}
+
+
 
 @media screen and (max-width: 600px) {
   header .banderole {
