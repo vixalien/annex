@@ -1,8 +1,21 @@
-.header .banderole {
+header .banderole {
   max-width: var(--content-width);
   margin-inline: auto;
 }
 
-.header .banderole > * {
+header .banderole > * {
   flex: 1;
+}
+
+header .icon {
+  width: unset;
+}
+
+@media screen and (max-width: 600px) {
+  header .banderole {
+    flex-direction: column;
+    gap: 5px;
+    align-items: stretch;
+    text-align: center;
+  }
 }
