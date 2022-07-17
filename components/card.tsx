@@ -1,7 +1,7 @@
 /** @jsx h */
 // deno-lint-ignore-file no-explicit-any
 
-import { h } from "preact";
+import { h, } from "preact";
 import { format } from "timeago.js"
 
 interface CardProps {
@@ -13,9 +13,9 @@ interface CardProps {
   date?: string;
 }
 
-
 export const Card = ({ icon, title, description, href, footnote, date }: CardProps) => {
-  return <div className="card" href={href}>
+  return <div className="card">
+    { href ? <a href={href} className="link-puffyfill"><span></span></a> : null }
     <div className="icon">
       {icon}
     </div>

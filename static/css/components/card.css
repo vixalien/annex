@@ -5,6 +5,21 @@
   border-radius: 7px;
   margin-block-end: 20px;
   align-items: flex-start;
+  overflow: hidden;
+  position: relative;
+}
+
+.card a.link-puffyfill {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.card a:not(.link-puffyfill) {
+  position: relative;
+  z-index: 1;
 }
 
 .card:hover {
@@ -15,14 +30,17 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: var(--primary-color);
   overflow: clip;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
 }
 
-.card>.icon>.avatar {
-  width: inherit;
-  height: inherit;
+.card>.icon>* {
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
+  margin: auto;
 }
 
 .card>.content>h4 {
@@ -43,6 +61,7 @@
   text-decoration: none;
   font-weight: bold;
   color: #0761D1;
+  z-index: 3;
 }
 
 .card .rating {
