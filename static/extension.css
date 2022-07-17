@@ -111,7 +111,7 @@ header::before {
 
 .banderole {
   display: flex;
-  gap: 40px;
+  gap: 25px;
   justify-content: center;
   align-items: center;
   padding: 1em 1em 45px;

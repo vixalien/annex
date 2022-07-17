@@ -54,7 +54,14 @@ const Screenshot = ({ screenshot }: { screenshot?: string }) => {
 
 const Page = ({ data: { extension, comments } }: PageProps<ReturnedPageProps>) => {
   return <>
-    <Header extension={extension} />
+    <Header
+      image={<img src={extension.icon}/>}
+      title={extension.name}
+      links={{
+        "Installed Extensions": "/local",
+        "About": "/about",
+      }}
+    />
     <main>
       <Actions extension={extension} />
       <Details extension={extension} />

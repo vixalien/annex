@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-explicit-any
 /** @jsx h */
 /** @jsxFrag Fragment */
 
@@ -7,13 +8,18 @@ import { h, Fragment } from "preact";
 import { GNOMEExtensions } from "./icons.tsx";
 import { Link } from "./button.tsx";
 
-import { Extension } from "~/lib/api.ts";
-
-interface NeedsExtension {
-  extension: Extension;
+interface LinkMap {
+  [key: string]: string;
 }
 
-export const Header = ({ extension }: NeedsExtension) => {
+interface HeaderProps {
+  links: LinkMap;
+  image: any;
+  title: string;
+  subtitle?: string;
+}
+
+export const Header = ({ title, image, links, subtitle }: HeaderProps) => {
   return <>
     <Head>
       <link href="/extension.css" rel="stylesheet"></link>
@@ -25,24 +31,23 @@ export const Header = ({ extension }: NeedsExtension) => {
         </Link>
         <nav>
           <ul>
-            <li>
-              <Link href="/local">Installed Extensions</Link>
-            </li>
-            <li>
-              <Link href="/about">About</Link>
-            </li>
+            {Object.entries(links).map(([key, href]) => {
+              return <li>
+                <Link href={href}>{key}</Link>
+              </li>
+            })}
           </ul>
         </nav>
       </div>
       <div className="banderole">
         <div className="icon">
-          <img
-            src={extension.icon}
-          />
         </div>
-        <h1 className="title">
-          {extension.name}
-        </h1>
+        <div className="header-text">
+          <h1 className="title">
+            {title}
+          </h1>
+          {subtitle ? <p>{subtitle}</p> : null}
+        </div>
       </div>
     </header>
   </>
