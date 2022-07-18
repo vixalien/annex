@@ -101,7 +101,7 @@ const proxy = (url: string): string => {
 		url = url.replace("/api/proxy", "");
 		url = decodeURIComponent(url);
 	}
-	if (Deno.env.get("ANNEX_PROXY_URL")) {
+	if (typeof Deno !== "undefined" && Deno.env.get("ANNEX_PROXY_URL")) {
 		return new URL(url, Deno.env.get("ANNEX_PROXY_URL") as string).href;
 	}
 	return new URL(`/api/proxy?href=${encodeURIComponent(url)}`, window.location?.href || "http://localhost:8000").href;
