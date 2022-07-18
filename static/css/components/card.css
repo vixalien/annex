@@ -50,6 +50,7 @@
 .card p {
   margin: 3px 0;
   white-space: pre-line;
+  overflow-wrap: anywhere;
 }
 
 .card .footnote {
