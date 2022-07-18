@@ -86,7 +86,8 @@ const load = async (url: string): Promise<any | null> => {
 	// if you failed to parse it, it's a 404 (or 500 in case of comment)
 	try {
 		return await response.json();
-	} catch {
+	} catch (error) {
+		console.log("Error while trying to parse JSON", url, error);
 		return null;
 	}
 }
