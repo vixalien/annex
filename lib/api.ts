@@ -76,6 +76,7 @@ export const normalizeSearchResult = (result: SearchResult): SearchResult => {
 	};
 }
 
+// deno-lint-ignore no-explicit-any
 const load = async (url: string): Promise<any | null> => {
 	url = proxy(url);
 	const response = await fetch(url, {
