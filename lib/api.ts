@@ -101,7 +101,10 @@ const proxy = (url: string): string => {
 		url = url.replace("/api/proxy", "");
 		url = decodeURIComponent(url);
 	}
-	return new URL(`/api/proxy?href=${encodeURIComponent(url)}`, window.location?.href || Deno.env.get("URL") || "http://localhost:8000").href;
+	if (Deno.env.get("ANNEX_PROXY_URL")) {
+		return new URL(url, Deno.env.get("ANNEX_PROXY_URL") as string).href;
+	}
+	return new URL(`/api/proxy?href=${encodeURIComponent(url)}`, window.location?.href || "http://localhost:8000").href;
 }
 
 export const getComments = (primaryKey: number, loadAll = false): Promise<Comment[] | null> => {

@@ -27,6 +27,8 @@ If you are looking to contribute, here are a few things that would like to be im
 
 The aforementioned undocumented GNOME extensions API only accepts HTTPS requests from `https://extensions.gnome.org`. This means that in a browser, you can't make requests to the API endpoints because of security reasons (CORS). This means that all API calls have to be made through a simple proxy (located at `lib/api/proxy`) and all this does is spoof the request and change the `Origin` header to `https://extensions.gnome.org/` to allow for the API endpoint to give us results.
 
+Annex can also use a dedicated proxy that serves the GNOME extensions website without the CORS limitations by setting the `ANNEX_PROXY_URL`.
+
 There are no plans on how it will work in the future but the proxy is a very good solution (and I hope, legal).
 
 ### Usage
@@ -39,7 +41,7 @@ You need to provide the `URL` environment variable, so that it can do requests t
 Start the project:
 
 ```
-URL=localhost:8000 deno task start
+deno task start
 ```
 
 This will watch the project directory and restart as necessary.
