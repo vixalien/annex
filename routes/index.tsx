@@ -43,8 +43,7 @@ interface ReturnedPageProps {
   initialSearchResult: SearchResult;
 }
 
-export const handler = async (req: Request, ctx: HandlerContext): Promise<Response> => {
-  const uuid = ctx.params.uuid;
+export const handler = async (_req: Request, ctx: HandlerContext): Promise<Response> => {
   const searchResult = await searchExtensions();
   return ctx.render({
     initialSearchResult: normalizeSearchResult(searchResult)
