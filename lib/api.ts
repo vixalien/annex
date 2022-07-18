@@ -76,7 +76,7 @@ export const normalizeSearchResult = (result: SearchResult): SearchResult => {
 	};
 }
 
-const load = async (url: string): Promise<any> => {
+const load = async (url: string): Promise<any | null> => {
 	url = proxy(url);
 	const response = await fetch(url, {
 		headers: {
@@ -104,7 +104,7 @@ const proxy = (url: string): string => {
 	return new URL(`/api/proxy?href=${encodeURIComponent(url)}`, window.location?.href || Deno.env.get("URL") || "http://localhost:8000").href;
 }
 
-export const getComments = (primaryKey: number, loadAll = false): Promise<Comment[]> => {
+export const getComments = (primaryKey: number, loadAll = false): Promise<Comment[] | null> => {
 	return load(`/comments/all/?pk=${primaryKey}&all=${loadAll}`);
 }
 
@@ -114,11 +114,16 @@ export const getExtension = (uuid: string): Promise<Extension | null> => {
 
 export interface SearchOptions {
 	page?: number;
-	shell_version?: "all" | number;
-	search?: string | undefined;
-	sort?: undefined | "name" | "recent" | "downloads" | "popularity";
+	shell_version?: "all" | string;
+	sort?: "name" | "recent" | "downloads" | "popularity";
 }
 
-export const searchExtensions = (query = "", options: SearchOptions = {}): Promise<SearchResult> => {
-	return load(`/extension-query/?${new URLSearchParams(Object.entries(options)).toString()}&search=${query}`);
+export const searchExtensions = (query?: string, options: SearchOptions = {}): Promise<SearchResult | null> => {
+	const entries = Object.entries({
+		search: query?.trim(),
+		...options
+	}).filter(([_key, value]) => {
+		return value;
+	}) as [string, string][];
+	return load(`/extension-query/?${new URLSearchParams(entries).toString()}`);
 }

@@ -45,6 +45,9 @@ interface ReturnedPageProps {
 
 export const handler = async (_req: Request, ctx: HandlerContext): Promise<Response> => {
   const searchResult = await searchExtensions();
+  if (!searchResult) return new Response("Couldn't get extensions", {
+    status: 404
+  })
   return ctx.render({
     initialSearchResult: normalizeSearchResult(searchResult)
   })

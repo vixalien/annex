@@ -16,17 +16,23 @@ interface SearchFormProps {
 
 const SearchForm = ({ onResult }: SearchFormProps) => {
   const [searching, setSearching] = useState(false);
+  const [previous, setPrevious] = useState("");
 
   const handleChange = (search: string) => {
+    if (search.trim() === previous) return;
     setSearching(true);
     searchExtensions(search, {
       page: 1,
       shell_version: "all",
-      search: search,
       sort: "downloads",
     })
+      .then(extensions => {
+        if (!extensions) alert("Couldn't search for extensions");
+        return extensions as SearchResult;
+      })
       .then(normalizeSearchResult)
       .then(result => {
+        setPrevious(search.trim());
         onResult(result);
       }).finally(() => {
         setSearching(false);
