@@ -78,7 +78,7 @@ export const normalizeSearchResult = (result: SearchResult): SearchResult => {
 
 const load = async (url: string): Promise<any | null> => {
 	url = proxy(url);
-	console.log("proxied url", proxy);
+	console.log("proxied url", url);
 	const response = await fetch(url, {
 		headers: {
 			"Origin": "https://extensions.gnome.org",
@@ -86,7 +86,7 @@ const load = async (url: string): Promise<any | null> => {
 	});
 	// if you failed to parse it, it's a 404 (or 500 in case of comment)
 	try {
-		console.log("result", response.status, response.clone().text())
+		console.log("result", response.status, await response.clone().text())
 		return await response.json();
 	} catch {
 		return null;
