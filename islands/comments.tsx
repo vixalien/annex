@@ -1,9 +1,9 @@
 /** @jsx h */
 
 import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
-import { Updating, Load } from "../components/adwaita.tsx";
+import { Load, Updating } from "../components/adwaita.tsx";
 import { Card } from "../components/card.tsx";
 import { Button, Link } from "../components/button.tsx";
 import { Rating } from "../components/rating.tsx";
@@ -25,7 +25,7 @@ const Comments = ({ pk, initialComments }: CommentsProps) => {
 
   useEffect(() => {
     if (initialComments) return;
-    getComments(pk).then(comments => {
+    getComments(pk).then((comments) => {
       setComments(comments);
       setLoading(false);
     });
@@ -33,58 +33,73 @@ const Comments = ({ pk, initialComments }: CommentsProps) => {
 
   const loadMore = () => {
     setLoadingMore(true);
-    getComments(pk, true).then(comments => {
+    getComments(pk, true).then((comments) => {
       setComments(comments);
       setLoadingMore(false);
       setLoadedMore(true);
     });
-  }
+  };
 
   if (loading) {
-    return <div className="comments">
-      <h3>User Reviews</h3>
-      <div className="loading">
-        <Updating /> <span>Loading comments...</span>
+    return (
+      <div className="comments">
+        <h3>User Reviews</h3>
+        <div className="loading">
+          <Updating /> <span>Loading comments...</span>
+        </div>
       </div>
-    </div>;
+    );
   }
 
   // TODO: sanitize html
-  return <div className="comments">
-    <h3>User Reviews</h3>
-    <div className="grid">
-      {comments.map((comment, index) => {
-        return <div className="comment" key={index}>
-          <Card
-            icon={
-              <img
-                className="avatar"
-                src={comment.gravatar}
+  return (
+    <div className="comments">
+      <h3>User Reviews</h3>
+      <div className="grid">
+        {comments.map((comment, index) => {
+          return (
+            <div className="comment" key={index}>
+              <Card
+                icon={
+                  <img
+                    className="avatar"
+                    src={comment.gravatar}
+                  />
+                }
+                title={comment.rating
+                  ? <Rating rating={comment.rating} />
+                  : null}
+                description={
+                  <p dangerouslySetInnerHTML={{ __html: comment.comment }} />
+                }
+                footnote={
+                  <span>
+                    by{" "}
+                    <Link href={comment.author.url}>
+                      @{comment.author.username}
+                    </Link>
+                  </span>
+                }
+                date={comment.date.timestamp}
               />
-            }
-            title={comment.rating ? <Rating rating={comment.rating} /> : null}
-            description={
-              <p dangerouslySetInnerHTML={{ __html: comment.comment }} />
-            }
-            footnote={<span>
-              by <Link href={comment.author.url}>@{comment.author.username}</Link>
-            </span>}
-            date={comment.date.timestamp}
-          />
-        </div>
-      })}
+            </div>
+          );
+        })}
+      </div>
+      {!loaded_more
+        ? (
+          <div className="load-more">
+            <Button
+              icon={loading_more ? <Updating /> : <Load />}
+              onClick={loadMore}
+            >
+              {loading_more ? "Loading More..." : "Load More"}
+            </Button>
+          </div>
+        )
+        : null}
     </div>
-    {!loaded_more ? <div className="load-more">
-      <Button
-        icon={
-          loading_more ? <Updating /> : <Load />
-        }
-        onClick={loadMore}
-      >{
-          loading_more ? "Loading More..." : "Load More"
-        }</Button>
-    </div> : null}
-  </div>
-}
+  );
+};
 
 export default Comments;

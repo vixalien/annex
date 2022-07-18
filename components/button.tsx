@@ -16,7 +16,7 @@ export const Link = ({ href, children, className }: LinkProps) => {
       {children}
     </a>
   );
-}
+};
 
 export interface ButtonProps {
   href?: string;
@@ -27,11 +27,13 @@ export interface ButtonProps {
   onClick?: h.JSX.HTMLAttributes["onClick"];
 }
 
-export const Button = ({ children, className, error, icon, onClick }: ButtonProps) => {
+export const Button = (
+  { children, className, error, icon, onClick }: ButtonProps,
+) => {
   return (
     <button className={cn(className, { error })} onClick={onClick}>
       {icon ? <div className="icon">{icon}</div> : null}
       <span>{children}</span>
     </button>
   );
-}
+};

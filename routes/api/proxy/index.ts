@@ -2,7 +2,10 @@ import { HandlerContext } from "$fresh/server.ts";
 
 const API_URL = "https://extensions.gnome.org/";
 
-export const handler = async (req: Request, _ctx: HandlerContext): Promise<Response> => {
+export const handler = async (
+  req: Request,
+  _ctx: HandlerContext,
+): Promise<Response> => {
   let href = new URL(req.url).searchParams.get("href");
   if (!href) {
     return new Response("No HREF provided", { status: 500 });
@@ -13,7 +16,7 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
     const response = await fetch(url.href, {
       headers: {
         Origin: API_URL,
-      }
+      },
     });
     if (!response.ok) {
       return new Response(response.statusText, { status: response.status });
