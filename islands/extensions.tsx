@@ -1,7 +1,6 @@
 /** @jsx h */
-/** @jsxFrag Fragment */
 
-import { h, Fragment } from "preact";
+import { h } from "preact";
 import { useState } from "preact/hooks";
 
 import { Card } from "~/components/card.tsx"
@@ -22,7 +21,7 @@ const getExcerpt = (description: string) => {
 const Extensions = ({ initialSearchResult }: ExtensionsProps) => {
   const [extensions, setExtensions] = useState(initialSearchResult?.extensions || []);
 
-  return <>
+  return <div>
     <h2 className="hero">Find Extensions</h2>
     <SearchForm
       onResult={result => setExtensions(result.extensions)}
@@ -41,7 +40,7 @@ const Extensions = ({ initialSearchResult }: ExtensionsProps) => {
         />
       })}
     </div>
-  </>
+  </div>
 }
 
 export default Extensions;
