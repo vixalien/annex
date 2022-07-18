@@ -21,11 +21,7 @@ const SearchForm = ({ onResult }: SearchFormProps) => {
   const handleChange = (search: string) => {
     if (search.trim() === previous) return;
     setSearching(true);
-    searchExtensions(search, {
-      page: 1,
-      shell_version: "all",
-      sort: "downloads",
-    })
+    searchExtensions(search)
       .then(extensions => {
         if (!extensions) alert("Couldn't search for extensions");
         return extensions as SearchResult;
