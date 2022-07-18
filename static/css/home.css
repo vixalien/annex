@@ -40,17 +40,6 @@ main h2.hero {
   text-align: center;
 }
 
-.search-bar input {
-  padding: 10px 16px;
-  border-radius: 6px;
-  border: none;
-  width: 100%;
-  background-color: #e6e6e6;
-  font-size: 18px;
-}
-
-
-
 @media screen and (max-width: 600px) {
   header .banderole {
     flex-direction: column;

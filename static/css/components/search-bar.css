@@ -1,0 +1,35 @@
+.search-bar {
+  --placeholder-color: #6b6b6b;
+  position: relative;
+}
+
+.search-bar .icon {
+  position: absolute;
+  height: 1em;
+  top: 0;
+  bottom: 0;
+  margin-block: auto;
+  left: 16px;
+  color: var(--placeholder-color);
+}
+
+.search-bar:focus-within .icon {
+  color: inherit;
+}
+
+.search-bar input {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  width: 100%;
+  background-color: #e6e6e6;
+  font-size: 18px;
+}
+
+.search-bar.has-icon input {
+  padding-inline-start: calc(1em + 16px + 6px);
+}
+
+.search-bar input::placeholder {
+  color: var(--placeholder-color)
+}
