@@ -2,6 +2,8 @@
 
 A site that provides GNOME Shell Extensions in a fashion similar to the [GNOME Apps](https://apps.gnome.org) website.
 
+![Screenshot](./.github/screenshot.png)
+
 Even if this project was made to make the extensions experience more smooth and good-looking, the official [GNOME Extensions website](https://extensions.gnome.org) is probably the one you are looking on as it actually works, and is operated by the GNOME team.
 
 This project has a few quirks:
