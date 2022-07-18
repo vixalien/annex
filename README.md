@@ -31,12 +31,15 @@ There are no plans on how it will work in the future but the proxy is a very goo
 
 ### Usage
 
+
 The project uses Deno (a Javascript runtime/environment, similar to Node & Bun but cooler 🦕) so it requires it to be installed. You can install Deno following instructions on the [deno.land website](https://deno.land).
+
+You need to provide the `URL` environment variable, so that it can do requests to the API proxy.
 
 Start the project:
 
 ```
-deno task start
+URL=localhost:8000 deno task start
 ```
 
 This will watch the project directory and restart as necessary.

@@ -1,18 +1,3 @@
-interface Search {
-	// url https://extensions.gnome.org/extension-query/?page=1&shell_version=42.3.1&search=he
-	params: {
-		page: number;
-		shell_version: "all" | number;
-		search: string | undefined;
-		sort: undefined | "name" | "recent" | "downloads" | "popularity";
-	};
-	response: {
-		total: number;
-		numpages: number;
-		extensions: Extension[];
-	};
-}
-
 export interface SearchResult {
 	total: number;
 	numpages: number;
@@ -116,7 +101,7 @@ const proxy = (url: string): string => {
 		url = url.replace("/api/proxy", "");
 		url = decodeURIComponent(url);
 	}
-	return new URL(`/api/proxy?href=${encodeURIComponent(url)}`, window.location?.href || "http://localhost:8000").href;
+	return new URL(`/api/proxy?href=${encodeURIComponent(url)}`, window.location?.href || Deno.env.get("URL") || "http://localhost:8000").href;
 }
 
 export const getComments = (primaryKey: number, loadAll = false): Promise<Comment[]> => {
