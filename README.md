@@ -22,6 +22,7 @@ If you are looking to contribute, here are a few things that would like to be im
 4. Update the site's meta (favicon and title)
 5. Add metadata for GNOME extension pages (og-title, twitter-description) for SEO
 6. Add a footer (at the bottom of pages)
+7. Add Dark mode
 
 ### Proxy
 
