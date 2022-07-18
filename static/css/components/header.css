@@ -85,4 +85,5 @@ header .icon>* {
   z-index: 2;
   position: relative;
   flex-wrap: wrap;
+  text-align: center;
 }
