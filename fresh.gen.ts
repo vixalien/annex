@@ -9,6 +9,8 @@ import * as $3 from "./routes/extension/[uuid].tsx";
 import * as $4 from "./routes/index.tsx";
 import * as $$0 from "./islands/Counter.tsx";
 import * as $$1 from "./islands/comments.tsx";
+import * as $$2 from "./islands/extensions.tsx";
+import * as $$3 from "./islands/searchForm.tsx";
 
 const manifest = {
   routes: {
@@ -21,6 +23,8 @@ const manifest = {
   islands: {
     "./islands/Counter.tsx": $$0,
     "./islands/comments.tsx": $$1,
+    "./islands/extensions.tsx": $$2,
+    "./islands/searchForm.tsx": $$3,
   },
   baseUrl: import.meta.url,
 };
