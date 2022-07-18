@@ -20,6 +20,7 @@ export default function Home(props: PageProps<ReturnedPageProps>) {
         <link href="/css/common.css" rel="stylesheet"></link>
         <link href="/css/components/header.css" rel="stylesheet"></link>
         <link href="/css/components/card.css" rel="stylesheet"></link>
+        <link href="/css/components/search-bar.css" rel="stylesheet"></link>
         <link href="/css/home.css" rel="stylesheet"></link>
       </Head>
       <Header
